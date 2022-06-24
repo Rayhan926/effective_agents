@@ -4,13 +4,8 @@ import { useForm } from "react-hook-form";
 import Select from "../Select/Select";
 
 const Form = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
   const onSubmit = (data) => console.log(data);
-
   return (
     <section
       style={{
@@ -20,12 +15,12 @@ const Form = () => {
         backgroundPosition: "bottom",
       }}
     >
-      <div className="container max-w-[852px]">
+      <div className="container max-w-[852px] mt-20 pb-[140px] lg:mt-[160px] lg:pb-[160px]">
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* Step 1 --Start-- */}
           <StepTitle step={1} title="Brokerage Information" />
           <div className="space-y-6">
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <input
                 type="text"
                 className="__input"
@@ -47,7 +42,7 @@ const Form = () => {
               {...register("email")}
             />
 
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <input
                 type="password"
                 className="__input"
@@ -69,7 +64,7 @@ const Form = () => {
               {...register("officeAddress")}
             />
 
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <input
                 type="text"
                 className="__input"
@@ -96,7 +91,7 @@ const Form = () => {
           {/* Step 2 --Start-- */}
           <div className="mt-20">
             <StepTitle step={2} title="Brokerage Information" />
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <input
                 type="text"
                 className="__input"
@@ -122,15 +117,23 @@ const Form = () => {
             />
 
             <div className="max-w-[535px] space-y-8">
-              <Select {...register("state1")} required>
-                <option value="" disabled selected>
+              <Select
+                onChange={(e) => setValue("state1", e.target.value)}
+                required
+                defaultValue=""
+              >
+                <option value="" disabled hidden>
                   select a state
                 </option>
                 <option value="1">State 1</option>
                 <option value="2">State 2</option>
               </Select>
-              <Select {...register("state2")} required>
-                <option value="" disabled selected>
+              <Select
+                onChange={(e) => setValue("state2", e.target.value)}
+                required
+                defaultValue=""
+              >
+                <option value="" disabled hidden>
                   select a state
                 </option>
                 <option value="1">State 1</option>
@@ -154,10 +157,11 @@ const Form = () => {
                 <Select
                   id="year"
                   className="max-w-[257px]"
-                  {...register("year")}
+                  onChange={(e) => setValue("year", e.target.value)}
                   required
+                  defaultValue=""
                 >
-                  <option value="" disabled selected>
+                  <option value="" disabled hidden>
                     select a year
                   </option>
                   <option value="2022">2022</option>
