@@ -1,16 +1,49 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
-  box-sizing: border-box;
+  @apply font-sans;
+}
+
+@layer components {
+  .container {
+    @apply max-w-[1420px] mx-auto px-5;
+  }
+  .__button {
+    @apply bg-primary text-center hover:bg-primary-dark duration-100 text-white font-semibold rounded-full py-5 px-[48px] border-none outline-none focus:ring-1 ring-primary ring-offset-2 uppercase;
+  }
+  .__input {
+    @apply outline-none w-full block border bg-white border-soft-gray focus:border-dark-gray/50 placeholder:text-dark-gray placeholder:uppercase text-black px-6 py-5 font-medium;
+  }
+  .title_md {
+    @apply text-[24px] leading-[26px] tracking-[1px] lg:text-[36px] lg:leading-[52px] font-bold text-black capitalize;
+  }
+  .step_text {
+    @apply text-primary font-bold text-[13px] leading-[15px] lg:text-[18px] lg:leading-[21px] tracking-[1.5px] uppercase;
+  }
+}
+
+.__select {
+  @apply uppercase;
+}
+.__select option {
+  @apply uppercase;
+}
+.__select option:disabled {
+}
+
+.__select::-ms-expand {
+  display: none;
+}
+.__select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
+.__select:invalid {
+  @apply text-dark-gray;
 }
